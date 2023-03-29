@@ -1,6 +1,6 @@
 
 
-    <div class="mt-5 p-4 bg-info text-white text-center buttom ">
+    <div class="mt-5 p-4 bg-info text-white text-center  ">
         <p>Cats041</p>
     </div>
 </div>

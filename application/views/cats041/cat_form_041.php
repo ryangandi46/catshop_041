@@ -26,9 +26,14 @@
         </div>
         <select name="type_041" class="form-select" aria-label="Default select example" required>
             <option>Choose Type</option>
-            <option value="Domestic" <?= $type == 'Domestic' ? 'selected' : '' ?>>Domestic</option>
-            <option value="Angora" <?= $type == 'Angora' ? 'selected' : '' ?>>Angora</option>
+            <?php foreach ($category as $cate) { ?>
+                <option value="<?=$cate->cate_name_041?>" <?= set_select('type_041', '$cate->cate_name_041', $type == $cate->cate_name_041 ? TRUE : FALSE) ?>><?=$cate->cate_name_041?></option>
+            <?php } ?><!--
+            <option value="Angora" <?=set_select('type_041','Domestic',$type=='Domestic'?TRUE:FALSE) ?>>Domestic</option>
+            <option value="Angora" <?=set_select('type_041','Angora',$type=='Angora'?TRUE:FALSE) ?>>Angora</option>
+            <option value="Angora" <?=set_select('type_041','Persia',$type=='Persia'?TRUE:FALSE) ?>>Persia</option>
             <option value="Persia" <?= $type == 'Persia' ? 'selected' : '' ?>>Persia</option>
+            -->
         </select>
         <label>Gender</label>
         <div class="form-check form-check-inline">
@@ -53,7 +58,7 @@
         </div>
         <div class="d-grid gap-2">
             <input class="btn btn-primary" type="submit" value="SAVE" name="submit">
-            <a href="<?= site_url('cats041') ?>" class="btn btn-danger value="CANCEL">CANCEL</a>
+            <a href="<?= site_url('cats041') ?>" class="btn btn-danger" value=" CANCEL">CANCEL</a>
         </div>
     </form>
 </div>
