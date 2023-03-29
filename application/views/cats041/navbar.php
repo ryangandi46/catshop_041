@@ -1,5 +1,5 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<nav class="navbar navbar-expand-lg bg-body-tertiary text-bg-light p-3">
+<nav class="navbar navbar-expand-lg bg-body-tertiary text-bg-info p-3">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Catshop041</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
