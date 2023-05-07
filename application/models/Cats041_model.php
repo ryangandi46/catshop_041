@@ -76,7 +76,7 @@ class Cats041_model extends CI_Model
 
         $this->db->set('sold_041', '1');
         $this->db->where('id_041', $id);
-        $this->db->update('cats041', $sold);
+        $this->db->update('cats041');
     }
 
     public function sales()

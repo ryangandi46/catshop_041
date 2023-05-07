@@ -1,0 +1,25 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Auth041 extends CI_Controller
+{
+
+    public function login()
+    {
+        if ($this->input->post('login')) {
+            $this->load->view('home_menu_041');
+        }else{
+            $this->load->view('auth041/form_login_041');            
+        }
+    }
+
+    public function logout()
+    {
+        redirect('auth041/login');
+    }
+
+    public function changepass()
+    {
+        $this->load->view('auth041/form_password_041');
+    }
+}
