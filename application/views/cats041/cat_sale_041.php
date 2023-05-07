@@ -1,6 +1,6 @@
 <?php $this->load->view("cats041/header.php"); ?>
 <?php $this->load->view("cats041/navbar.php"); ?>
-<div class="container-md w-50">
+<div class="container-md w-50  mt-5 p-4">
     <h1 class="text-center">CATSHOP 041</h1>
     <h3 class="text-center">CAT SALE FORM</h3>
     <HR>

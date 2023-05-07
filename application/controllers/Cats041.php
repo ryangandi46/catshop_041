@@ -8,6 +8,7 @@ class Cats041 extends CI_Controller
     {
         parent::__construct();
         //your own constructor code
+        if (!$this->session->userdata('username')) redirect('auth041/login');
         $this->load->model('Cats041_model');
         $this->load->model('Categories041_model');
         $this->load->library('form_validation');
@@ -15,7 +16,45 @@ class Cats041 extends CI_Controller
 
     public function index()
     {
-        $data['cats'] = $this->Cats041_model->read();
+        $this->load->library('pagination');
+
+        $config['base_url'] = site_url('cats041/index');
+        $config['total_rows'] = $this->db->count_all('cats041');
+        $config['per_page'] = 5;
+        /*
+      start 
+      add boostrap class and styles
+    */
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = 'First';
+        $config['last_link'] = 'Last';
+        $config['first_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['first_tag_close'] = '</span></li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['prev_tag_close'] = '</span></li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['next_tag_close'] = '</span></li>';
+        $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['last_tag_close'] = '</span></li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close'] = '</span></li>';
+        /*
+      end 
+      add boostrap class and styles
+    */
+        $this->pagination->initialize($config);
+
+        $limit = $config['per_page'];
+        $start = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
+
+        $data["links"] = $this->pagination->create_links();
+        $data['i'] = $start + 1;
+        $data['cats'] = $this->Cats041_model->read($limit, $start);
         $this->load->view('cats041/cat_list_041', $data);
     }
 
@@ -82,6 +121,7 @@ class Cats041 extends CI_Controller
     }
     public function sales()
     {
+        if ($this->session->userdata('usertype') != 'Manager') redirect('welcome');
         $data['sales'] = $this->Cats041_model->sales();
         $this->load->view('cats041/sale_list_041', $data);
     }

@@ -1,6 +1,6 @@
 <?php include "header.php" ?>
 <?php include "navbar.php" ?>
-<div class="container-md w-25">
+<div class="container-md  mt-5 p-4 vstack gap-2 col-md-3 mx-auto">
     <h1 class="text-center">CATSHOP 041</h1>
     <h3 class="text-center">CATS FORM</h3>
     <hr>
@@ -56,7 +56,7 @@
             <label for="exampleFormControlInput1" class="form-label">Price</label>
             <input type="number" name="price_041" value="<?= $price ?>" class="form-control" id="" placeholder="Price" required>
         </div>
-        <div class="d-grid gap-2">
+        <div class="vstack gap-2 col-md-10 mx-auto">
             <input class="btn btn-primary" type="submit" value="SAVE" name="submit">
             <a href="<?= site_url('cats041') ?>" class="btn btn-danger" value=" CANCEL">CANCEL</a>
         </div>

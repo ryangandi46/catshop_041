@@ -1,6 +1,6 @@
 <?php $this->load->view ("cats041/header.php"); ?>
 <?php $this->load->view ("cats041/navbar.php"); ?>
-<div class="container-md w-25">
+<div class="container-md  mt-5 p-4 vstack gap-2 col-md-3 mx-auto">
     <h1 class="text-center">CATSHOP 041</h1>
     <h3 class="text-center">CATEGORIES FORM</h3>
     <hr>
@@ -22,7 +22,7 @@
         <label for="exampleFormControlInput1" class="form-label">Description</label>
             <input type="text" name="description_041" value="<?= $description_041 ?>" class="form-control" id="" placeholder="Description" required>
         </div>
-        <div class="d-grid gap-2">
+        <div class="container-md  vstack gap-2 col-md-10 mx-auto">
             <input class="btn btn-primary" type="submit" value="SAVE" name="submit">
             <a href="<?= site_url('categories041') ?>" class="btn btn-danger value=" CANCEL">CANCEL</a>
         </div>

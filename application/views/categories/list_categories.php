@@ -1,6 +1,6 @@
 <?php $this->load->view ("cats041/header.php"); ?>
 <?php $this->load->view ("cats041/navbar.php"); ?>
-<div class="container-md">
+<div class="container-md  mt-5 p-4">
     <h1 class="text-center">CATSHOP 041</h1>
     <h3>CATEGORIES LIST</h3>    
     <a class="btn btn-primary" href="<?= site_url('categories041/add') ?>">Add new categories</a>

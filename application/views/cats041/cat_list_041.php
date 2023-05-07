@@ -1,10 +1,10 @@
 <?php include "header.php" ?>
 <?php include "navbar.php" ?>
-<div class="container-md">
+<div class="container-md  mt-5 p-4">
     <h1 class="text-center">CATSHOP 041</h1>
-    <h3>CATS LIST</h3>    
+    <h3>CATS LIST</h3>
     <hr>
-    <?=$this->session->flashdata('msg')?>
+    <?= $this->session->flashdata('msg') ?>
     <a class="btn btn-primary" href="<?= site_url('cats041/add') ?>">Add new cat</a>
     <hr>
     <table class="table table-bordered table-hover ">
@@ -19,8 +19,7 @@
                 <th colspan="3">Action</th>
             </tr>
         </thead>
-        <?php $i = 1;
-        foreach ($cats as $cat) { ?>
+        <?php foreach ($cats as $cat) { ?>
             <tbody class="text-center">
                 <tr>
                     <td><?= $i++ ?></td>
@@ -31,11 +30,17 @@
                     <td><?= $cat->price_041 ?></td>
                     <td><a href="<?= site_url('cats041/edit/' . $cat->id_041) ?>" class="btn btn-primary">Edit</a></td>
                     <td><a href="<?= site_url('cats041/delete/' . $cat->id_041) ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
-                    <td><?php if($cat->sold_041==1) echo 'SOLD'; else { ?><a href="<?= site_url('cats041/sale/' . $cat->id_041) ?>" class="btn btn-success">SALE</a><?php } ?></td>
+                    <td><?php if ($cat->sold_041 == 1) echo 'SOLD';
+                        else { ?><a href="<?= site_url('cats041/sale/' . $cat->id_041) ?>" class="btn btn-success">SALE</a><?php } ?></td>
                 </tr>
             </tbody>
         <?php } ?>
     </table>
-    <a class="btn btn-primary  d-flex justify-content-center" href="<?=base_url()?>">Back to home</a>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <?php echo $links; ?>
+        </ul>
+    </nav>
+    <a class="btn btn-primary  d-flex justify-content-center" href="<?= base_url() ?>">Back to home</a>
 </div>
 <?php include "footer.php" ?>

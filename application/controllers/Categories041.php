@@ -7,6 +7,7 @@ class Categories041 extends CI_Controller
     {
         parent::__construct();
         //your own constructor code
+		if(! $this->session->userdata('username')) redirect('auth041/login');
         $this->load->model('Categories041_model');
     }
     public function index()
