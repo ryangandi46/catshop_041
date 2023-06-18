@@ -11,7 +11,7 @@ class Cats041_model extends CI_Model
             'type_041' => $this->input->post('type_041'),
             'gender_041' => $this->input->post('gender_041'),
             'age_041' => $this->input->post('age_041'),
-            'price_041' => $this->input->post('price_041')
+            'price_041' => $this->input->post('price_041')            
         );
         $this->db->insert('cats041', $data);
     }
@@ -90,5 +90,15 @@ class Cats041_model extends CI_Model
         $query = $this->db->get();
 
         return $query->result();
+    }
+
+    public function changecat($id, $old_photo, $photo)
+    {
+        if($old_photo !== 'default.png')
+            unlink('./uploads/cats/'.$old_photo); //hapus foto lama
+
+        $this->db->set('photo_041', $photo);
+        $this->db->where('id_041',$id);
+        return $this->db->update('cats041');
     }
 }

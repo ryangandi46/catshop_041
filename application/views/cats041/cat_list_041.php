@@ -12,11 +12,12 @@
             <tr>
                 <th>NO</th>
                 <th>Name</th>
+                <th>Photo</th>
                 <th>type</th>
                 <th>Gender</th>
                 <th>Age(month)</th>
                 <th>Price($)</th>
-                <th colspan="3">Action</th>
+                <th colspan="4">Action</th>
             </tr>
         </thead>
         <?php foreach ($cats as $cat) { ?>
@@ -24,10 +25,14 @@
                 <tr>
                     <td><?= $i++ ?></td>
                     <td><?= $cat->name_041 ?></td>
+                    <td>
+                        <img src="<?= base_url('uploads/cats/' . $cat->photo_041) ?>" class="img-fluid rounded " style="width:50; height:50;" alt="Photo user">
+                    </td>
                     <td><?= $cat->type_041 ?></td>
                     <td><?= $cat->gender_041 ?></td>
                     <td><?= $cat->age_041 ?></td>
                     <td><?= $cat->price_041 ?></td>
+                    <td><a href="<?= site_url('cats041/changecat/' . $cat->id_041.'/'.$cat->photo_041)?>" class="btn btn-primary">Change Photo</a></td>
                     <td><a href="<?= site_url('cats041/edit/' . $cat->id_041) ?>" class="btn btn-primary">Edit</a></td>
                     <td><a href="<?= site_url('cats041/delete/' . $cat->id_041) ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
                     <td><?php if ($cat->sold_041 == 1) echo 'SOLD';

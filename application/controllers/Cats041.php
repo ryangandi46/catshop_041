@@ -125,4 +125,32 @@ class Cats041 extends CI_Controller
         $data['sales'] = $this->Cats041_model->sales();
         $this->load->view('cats041/sale_list_041', $data);
     }
+
+    public function changecat($id, $old_photo)
+    {
+        if (!$this->session->userdata('username')) redirect('auth041/login'); //filter LOGIN
+        $data['error'] = '';
+        if ($this->input->post('upload')) {
+            if ($this->upload()) { // jikas sukses upload
+                $this->Cats041_model->changecat($id, $old_photo,$this->upload->data('file_name')); //ubah data foto database
+                //$this->session->userdata('photo', $this->upload->data('file_name')); //ubah data session
+                $this->session->flashdata('msg', '<p style="color:green">Photo seccesfuly changed !</p>'); //pesan sukses
+            } else $data['error'] = $this->upload->display_errors(); //jika gagal upload
+            redirect('cats041');
+        }
+        $data['cat']=$old_photo;
+        $this->load->view('cats041/cat_photo_041', $data);
+    }
+
+    public function upload()
+    {
+        $config['upload_path']          = './uploads/cats/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 0;
+        $config['max_width']            = 0;
+        $config['max_height']           = 0;
+
+        $this->load->library('upload', $config);
+        return $this->upload->do_upload('photo');
+    }
 }
